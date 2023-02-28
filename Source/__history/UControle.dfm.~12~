@@ -1,0 +1,151 @@
+object FormControleTicket: TFormControleTicket
+  Left = 0
+  Top = 0
+  Caption = 'Controle de Ticket e Funcion'#225'rio'
+  ClientHeight = 329
+  ClientWidth = 601
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PCControleTicket: TPageControl
+    Left = 8
+    Top = 8
+    Width = 585
+    Height = 320
+    ActivePage = TabFuncionario
+    TabOrder = 0
+    object TabFuncionario: TTabSheet
+      Caption = 'Funcion'#225'rio'
+      object LBNome: TLabel
+        Left = 3
+        Top = 42
+        Width = 27
+        Height = 13
+        Caption = 'Nome'
+      end
+      object LBCPF: TLabel
+        Left = 3
+        Top = 66
+        Width = 19
+        Height = 13
+        Caption = 'CPF'
+      end
+      object DBGrid1: TDBGrid
+        Left = 3
+        Top = 93
+        Width = 571
+        Height = 196
+        DataSource = DMControle.DSFuncionario
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        Columns = <
+          item
+            Expanded = False
+            FieldName = 'ID'
+            Title.Alignment = taCenter
+            Title.Caption = 'C'#243'd.'
+            Width = 43
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'NOME'
+            Title.Caption = 'Nome'
+            Width = 201
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CPF'
+            Title.Alignment = taCenter
+            Width = 135
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'SITUACAO'
+            Title.Alignment = taCenter
+            Title.Caption = 'Situa'#231#227'o'
+            Width = 58
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'DATA_ALTERACAO'
+            Title.Alignment = taCenter
+            Title.Caption = #218'ltima Altera'#231#227'o'
+            Width = 107
+            Visible = True
+          end>
+      end
+      object BTNNovoFuncionario: TButton
+        Left = 3
+        Top = 9
+        Width = 75
+        Height = 25
+        Caption = 'Novo'
+        TabOrder = 1
+        OnClick = BTNNovoFuncionarioClick
+      end
+      object BTNSalvarFuncionario: TButton
+        Left = 93
+        Top = 9
+        Width = 75
+        Height = 25
+        Caption = 'Salvar'
+        TabOrder = 2
+        OnClick = BTNSalvarFuncionarioClick
+      end
+      object EDNome: TDBEdit
+        Left = 40
+        Top = 39
+        Width = 313
+        Height = 21
+        DataField = 'NOME'
+        DataSource = DMControle.DSFuncionario
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 3
+      end
+      object EDCPF: TDBEdit
+        Left = 40
+        Top = 63
+        Width = 111
+        Height = 21
+        DataField = 'CPF'
+        DataSource = DMControle.DSFuncionario
+        TabOrder = 4
+      end
+      object RGSituacao: TRadioGroup
+        Left = 376
+        Top = 39
+        Width = 168
+        Height = 45
+        Caption = 'Situa'#231#227'o'
+        ItemIndex = 0
+        Items.Strings = (
+          'Ativo'
+          'Inativo')
+        TabOrder = 5
+      end
+    end
+    object TabTicket: TTabSheet
+      Caption = 'Ticket'
+      ImageIndex = 1
+    end
+    object TabRelatorio: TTabSheet
+      Caption = 'Relat'#243'rio'
+      ImageIndex = 2
+    end
+  end
+end

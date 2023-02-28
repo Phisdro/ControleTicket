@@ -1,0 +1,16 @@
+program ControleTicket;
+
+uses
+  Vcl.Forms,
+  UControle in 'UControle.pas' {frmControleTicket},
+  UDMControle in 'UDMControle.pas' {DMControle: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmControleTicket, frmControleTicket);
+  Application.CreateForm(TDMControle, DMControle);
+  Application.Run;
+end.

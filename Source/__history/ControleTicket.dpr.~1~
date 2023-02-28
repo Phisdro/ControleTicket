@@ -1,0 +1,16 @@
+program Project1;
+
+uses
+  System.StartUpCopy,
+  FMX.Forms,
+  Ticket in 'Ticket.pas' {UTicket},
+  DMTicket in 'DMTicket.pas' {UDMTicket: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.CreateForm(TUTicket, UTicket);
+  Application.CreateForm(TUDMTicket, UDMTicket);
+  Application.Run;
+end.

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/02/17 17:51:51.000.626,=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/02/17 20:25:04.000.915,C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/02/20 15:54:49.000.190,=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/02/22 10:06:38.000.375,=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/02/22 10:07:17.000.663,C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\ControleTicket.dproj=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/02/22 10:09:49.000.379,C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\UControle.dfm=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/02/22 10:09:49.000.379,C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\UControle.pas=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/02/22 10:10:09.000.817,=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/02/22 11:16:08.000.390,C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\DMControle.dfm=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2023/02/22 11:16:08.000.390,C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\DMControle.pas=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2023/02/22 11:16:26.000.272,C:\GitHub\ControleTicket\Source\UControle.dfm=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\UControle.dfm</Transaction>
+    <Transaction>2023/02/22 11:16:26.000.272,C:\GitHub\ControleTicket\Source\UControle.pas=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\UControle.pas</Transaction>
+    <Transaction>2023/02/22 11:16:28.000.358,C:\GitHub\ControleTicket\Source\DMControle.pas=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\DMControle.pas</Transaction>
+    <Transaction>2023/02/22 11:16:28.000.358,C:\GitHub\ControleTicket\Source\DMControle.dfm=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\DMControle.dfm</Transaction>
+    <Transaction>2023/02/22 11:16:30.000.020,C:\GitHub\ControleTicket\Source\ControleTicket.dproj=C:\Users\siebr\Documentos\Embarcadero\Studio\Projects\ControleTicket.dproj</Transaction>
+    <Transaction>2023/02/22 15:40:56.000.434,C:\GitHub\ControleTicket\Source\DMControle.pas=C:\GitHub\ControleTicket\Source\UDMControle.pas</Transaction>
+    <Transaction>2023/02/22 15:40:56.000.434,C:\GitHub\ControleTicket\Source\DMControle.dfm=C:\GitHub\ControleTicket\Source\UDMControle.dfm</Transaction>
+    <Transaction>2023/02/24 15:44:26.000.795,C:\GitHub\ControleTicket\Source\UControle.pas=C:\GitHub\ControleTicket\Source\UControleTicket.pas</Transaction>
+    <Transaction>2023/02/24 15:44:26.000.795,C:\GitHub\ControleTicket\Source\UControle.dfm=C:\GitHub\ControleTicket\Source\UControleTicket.dfm</Transaction>
+    <Transaction>2023/02/24 15:44:33.000.912,C:\GitHub\ControleTicket\Source\UDMControle.pas=C:\GitHub\ControleTicket\Source\UDMControleTicket.pas</Transaction>
+    <Transaction>2023/02/24 15:44:33.000.912,C:\GitHub\ControleTicket\Source\UDMControle.dfm=C:\GitHub\ControleTicket\Source\UDMControleTicket.dfm</Transaction>
+    <Transaction>2023/02/26 20:45:04.000.190,=C:\GitHub\ControleTicket\Source\Unit1.pas</Transaction>
+    <Transaction>2023/02/27 18:11:00.000.079,=C:\GitHub\ControleTicket\Source\Unit1.pas</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="UControleTicket.pas"/>
+    <File Path="UControleTicket.dfm"/>
+    <File Path="UDMControleTicket.pas"/>
+    <File Path="UDMControleTicket.dfm"/>
+  </ProjectSortOrder>
+	<BT_BuildType>Debug</BT_BuildType>
+</BorlandProject>

@@ -1,0 +1,50 @@
+unit UControle;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids, UDMControle,
+  Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask, Vcl.Buttons;
+
+type
+  TFormControleTicket = class(TForm)
+    PCControleTicket: TPageControl;
+    TabFuncionario: TTabSheet;
+    DBGrid1: TDBGrid;
+    TabTicket: TTabSheet;
+    TabRelatorio: TTabSheet;
+    LBNome: TLabel;
+    EDNome: TDBEdit;
+    EDCPF: TDBEdit;
+    LBCPF: TLabel;
+    RGSituacao: TRadioGroup;
+    BTNNovo: TBitBtn;
+    BTNSalvar: TBitBtn;
+    procedure BTNNovoFuncionarioClick(Sender: TObject);
+    procedure BTNSalvarFuncionarioClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormControleTicket: TFormControleTicket;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormControleTicket.BTNNovoFuncionarioClick(Sender: TObject);
+begin
+   DMControle.TBFuncionario.Append;
+end;
+
+procedure TFormControleTicket.BTNSalvarFuncionarioClick(Sender: TObject);
+begin
+  DMControle.TBFuncionario.Post;
+  DMControle.Secao.CommitRetaining;
+end;
+
+end.

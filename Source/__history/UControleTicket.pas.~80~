@@ -1,0 +1,151 @@
+unit UControleTicket;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids, UDMControleTicket,
+  Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask, Vcl.Buttons,
+  System.ImageList, Vcl.ImgList, Vcl.DBCGrids;
+
+type
+  TfrmControleTicket = class(TForm)
+    pcControleTicket: TPageControl;
+    tabFuncionario: TTabSheet;
+    dbgFuncionario: TDBGrid;
+    tabTicket: TTabSheet;
+    tabRelatorio: TTabSheet;
+    lbNome: TLabel;
+    edtNome: TDBEdit;
+    edtCPF: TDBEdit;
+    lbCPF: TLabel;
+    btnNovoFuncionario: TBitBtn;
+    btnSalvarFuncionario: TBitBtn;
+    ImageList1: TImageList;
+    btnCancelarFuncionario: TBitBtn;
+    btnNovoTicket: TBitBtn;
+    btnSalvarTicket: TBitBtn;
+    btnCancelarTicket: TBitBtn;
+    lblFuncionarioTicket: TLabel;
+    edtQtdeTicket: TDBEdit;
+    lblQtdeTicket: TLabel;
+    dbgTicket: TDBGrid;
+    rgSituacao: TDBRadioGroup;
+    cbFuncionario: TDBLookupComboBox;
+    rgSituacaoTicket: TDBRadioGroup;
+    DBGrid1: TDBGrid;
+    procedure btnNovoFuncionarioClick(Sender: TObject);
+    procedure btnSalvarFuncionarioClick(Sender: TObject);
+    procedure btnCancelarFuncionarioClick(Sender: TObject);
+    procedure tabFuncionarioShow(Sender: TObject);
+    procedure tabTicketShow(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure btnNovoTicketClick(Sender: TObject);
+    procedure btnSalvarTicketClick(Sender: TObject);
+    procedure btnCancelarTicketClick(Sender: TObject);
+    procedure edtCPFChange(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmControleTicket: TfrmControleTicket;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmControleTicket.btnCancelarFuncionarioClick(Sender: TObject);
+begin
+  DMControle.fdqFuncionario.Cancel;
+end;
+
+procedure TfrmControleTicket.btnCancelarTicketClick(Sender: TObject);
+begin
+  DMControle.fdqTicketFuncionario.Cancel;
+end;
+
+procedure TfrmControleTicket.btnNovoFuncionarioClick(Sender: TObject);
+begin
+  edtNome.SetFocus;
+  edtCPF.SetFocus;
+  DMControle.fdqFuncionario.Append;
+  edtNome.SetFocus;
+end;
+
+procedure TfrmControleTicket.btnNovoTicketClick(Sender: TObject);
+begin
+  cbFuncionario.SetFocus;
+  DMControle.fdqTicketFuncionario.Append;
+end;
+
+procedure TfrmControleTicket.btnSalvarFuncionarioClick(Sender: TObject);
+begin
+  if (DMControle.fdqFuncionario.State in [dsEdit, dsInsert])then
+  begin
+    DMControle.fdqFuncionarioDATA_ALTERACAO.AsDateTime := now;
+    DMControle.fdqFuncionario.Post;
+  end;
+  DMControle.Secao.CommitRetaining;
+  DMControle.fdqFuncionario.Refresh;
+end;
+
+procedure TfrmControleTicket.btnSalvarTicketClick(Sender: TObject);
+begin
+  if (DMControle.fdqTicketFuncionario.State in [dsEdit, dsInsert])then
+  begin
+    DMControle.fdqTicketFuncionario.Post;
+    DMControle.Secao.CommitRetaining;
+    DMControle.fdqTicketFuncionario.Refresh;
+  end;
+end;
+
+procedure TfrmControleTicket.edtCPFChange(Sender: TObject);
+var
+  posicao: Integer;
+begin
+  posicao := edtCPF.SelStart;
+  edtCPF.Text := StringReplace(edtCPF.Text, ' ', '', [rfReplaceAll]);
+  edtCPF.SelStart := posicao;
+end;
+
+procedure TfrmControleTicket.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+    case MessageDlg('Atenção!'+#10+#10+'As alterações não salvas serão perdidas, deseja salvar?',
+                    TMsgDlgType.mtCustom,mbYesNoCancel,0) of
+      IDYES :
+        begin
+          if (dmcontrole.fdqFuncionario.State in [dsEdit, dsInsert]) then
+            DMControle.fdqFuncionario.Post;
+          if (dmcontrole.fdqTicketFuncionario.State in [dsEdit, dsInsert]) then
+            DMControle.fdqTicketFuncionario.Post;
+          DMControle.Secao.CommitRetaining;
+        end;
+      IDNO : DMControle.Secao.RollbackRetaining;
+      IDCANCEL : Abort;
+    end;
+end;
+
+procedure TfrmControleTicket.FormShow(Sender: TObject);
+begin
+  DMControle.Secao.StartTransaction;
+end;
+
+procedure TfrmControleTicket.tabFuncionarioShow(Sender: TObject);
+begin
+  DMControle.fdqFuncionario.Close;
+  DMControle.fdqFuncionario.Open;
+end;
+
+procedure TfrmControleTicket.tabTicketShow(Sender: TObject);
+begin
+  DMControle.fdqTicketFuncionario.Close;
+  DMControle.fdqTicketFuncionario.Open;
+end;
+
+end.
+

@@ -1,0 +1,144 @@
+object DMControle: TDMControle
+  OldCreateOrder = False
+  Height = 286
+  Width = 384
+  object Banco: TIBDatabase
+    Connected = True
+    DatabaseName = 'C:\GitHub\ControleTicket\Database\ticket.fdb'
+    Params.Strings = (
+      'user_name=SYSDBA'
+      'password=masterkey')
+    LoginPrompt = False
+    DefaultTransaction = Secao
+    ServerType = 'IBServer'
+    Left = 48
+    Top = 56
+  end
+  object Secao: TIBTransaction
+    Active = True
+    DefaultDatabase = Banco
+    Left = 240
+    Top = 56
+  end
+  object DSFuncionario: TDataSource
+    DataSet = TBFuncionario
+    Left = 56
+    Top = 120
+  end
+  object TBFuncionario: TIBTable
+    Database = Banco
+    Transaction = Secao
+    BeforePost = TBFuncionarioBeforePost
+    BufferChunks = 1000
+    CachedUpdates = False
+    FieldDefs = <
+      item
+        Name = 'ID'
+        Attributes = [faRequired]
+        DataType = ftInteger
+      end
+      item
+        Name = 'CPF'
+        Attributes = [faRequired]
+        DataType = ftWideString
+        Size = 44
+      end
+      item
+        Name = 'NOME'
+        Attributes = [faRequired]
+        DataType = ftWideString
+        Size = 240
+      end
+      item
+        Name = 'SITUACAO'
+        Attributes = [faFixed]
+        DataType = ftWideString
+        Size = 4
+      end
+      item
+        Name = 'DATA_ALTERACAO'
+        Attributes = [faRequired]
+        DataType = ftInteger
+      end>
+    IndexDefs = <
+      item
+        Name = 'PK_FUNCIONARIO'
+        Fields = 'ID'
+        Options = [ixUnique]
+      end>
+    StoreDefs = True
+    TableName = 'FUNCIONARIO'
+    UpdateObject = UPDFuncionario
+    UniDirectional = False
+    Left = 136
+    Top = 120
+    object TBFuncionarioID: TIntegerField
+      Alignment = taCenter
+      FieldName = 'ID'
+    end
+    object TBFuncionarioCPF: TIBStringField
+      DisplayWidth = 11
+      FieldName = 'CPF'
+      Required = True
+      EditMask = '000.000.000-00;0;_'
+      Size = 44
+    end
+    object TBFuncionarioNOME: TIBStringField
+      FieldName = 'NOME'
+      Required = True
+      Size = 240
+    end
+    object TBFuncionarioSITUACAO: TIBStringField
+      Alignment = taCenter
+      DefaultExpression = 'A'
+      FieldName = 'SITUACAO'
+      KeyFields = 'SITUACAO'
+      FixedChar = True
+      Size = 4
+    end
+    object TBFuncionarioDATA_ALTERACAO: TIntegerField
+      FieldName = 'DATA_ALTERACAO'
+    end
+  end
+  object UPDFuncionario: TIBUpdateSQL
+    RefreshSQL.Strings = (
+      'Select '
+      '  RDB$DB_KEY as IBX_INTERNAL_DBKEY, '
+      '  ID,'
+      '  CPF,'
+      '  NOME,'
+      '  SITUACAO,'
+      '  DATA_ALTERACAO'
+      'from FUNCIONARIO '
+      'where'
+      '  ID = :ID')
+    ModifySQL.Strings = (
+      'update FUNCIONARIO'
+      'set'
+      '  CPF = :CPF,'
+      '  NOME = :NOME,'
+      '  SITUACAO = :SITUACAO,'
+      '  DATA_ALTERACAO = :DATA_ALTERACAO'
+      'where'
+      '  ID = :OLD_ID')
+    InsertSQL.Strings = (
+      'insert into FUNCIONARIO'
+      '  (CPF, NOME, SITUACAO, DATA_ALTERACAO)'
+      'values'
+      '  (:CPF, :NOME, :SITUACAO, :DATA_ALTERACAO)')
+    DeleteSQL.Strings = (
+      'delete from FUNCIONARIO'
+      'where'
+      '  ID = :OLD_ID')
+    Left = 214
+    Top = 120
+  end
+  object Conexao: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=TICKETDB')
+    Connected = True
+    LoginPrompt = False
+    Left = 136
+    Top = 56
+  end
+end

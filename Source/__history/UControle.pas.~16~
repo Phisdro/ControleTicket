@@ -1,0 +1,61 @@
+unit UControle;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids, UDMControle,
+  Vcl.StdCtrls, Vcl.ComCtrls, Vcl.ExtCtrls, Vcl.DBCtrls, Vcl.Mask, Vcl.Buttons,
+  System.ImageList, Vcl.ImgList;
+
+type
+  TfrmControleTicket = class(TForm)
+    pcControleTicket: TPageControl;
+    tabFuncionario: TTabSheet;
+    dbgFuncionario: TDBGrid;
+    tabTicket: TTabSheet;
+    tabRelatorio: TTabSheet;
+    lbNome: TLabel;
+    edtNome: TDBEdit;
+    edtCPF: TDBEdit;
+    lbCPF: TLabel;
+    rgSituacao: TRadioGroup;
+    btnNovoFuncionario: TBitBtn;
+    btnSalvarFuncionario: TBitBtn;
+    ImageList1: TImageList;
+    btnCancelarFuncionario: TBitBtn;
+    procedure btnNovoFuncionarioClick(Sender: TObject);
+    procedure btnSalvarFuncionarioClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmControleTicket: TfrmControleTicket;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmControleTicket.btnNovoFuncionarioClick(Sender: TObject);
+begin
+  DMControle.TBFuncionario.Append;
+end;
+
+procedure TfrmControleTicket.btnSalvarFuncionarioClick(Sender: TObject);
+begin
+  if (DMControle.TBFuncionario.State in [dsEdit, dsInsert])then
+    DMControle.TBFuncionario.Post;
+  DMControle.Secao.CommitRetaining;
+  DMControle.tbFuncionario.Refresh;
+end;
+
+procedure TfrmControleTicket.FormShow(Sender: TObject);
+begin
+  DMControle.TBFuncionario.Open;
+end;
+
+end.

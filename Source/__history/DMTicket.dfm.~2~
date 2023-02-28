@@ -1,0 +1,69 @@
+object UDMTicket: TUDMTicket
+  OldCreateOrder = False
+  Height = 386
+  Width = 726
+  object TicketdbConnection: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=TICKETDB')
+    Connected = True
+    LoginPrompt = False
+    Transaction = Transaction
+    Left = 35
+    Top = 13
+  end
+  object Transaction: TFDTransaction
+    Connection = TicketdbConnection
+    Left = 128
+    Top = 13
+  end
+  object FuncionarioUpdate: TFDUpdateSQL
+    Connection = TicketdbConnection
+    InsertSQL.Strings = (
+      'INSERT INTO FUNCIONARIO'
+      '(NOME, CPF, SITUACAO, DATA_ALTERACAO)'
+      'VALUES (:NEW_NOME, :NEW_CPF, :NEW_SITUACAO, :NEW_DATA_ALTERACAO)'
+      'RETURNING ID, NOME, CPF, SITUACAO, DATA_ALTERACAO')
+    ModifySQL.Strings = (
+      'UPDATE FUNCIONARIO'
+      'SET NOME = :NEW_NOME, CPF = :NEW_CPF, SITUACAO = :NEW_SITUACAO, '
+      '  DATA_ALTERACAO = :NEW_DATA_ALTERACAO'
+      'WHERE ID = :OLD_ID'
+      'RETURNING ID, NOME, CPF, SITUACAO, DATA_ALTERACAO')
+    DeleteSQL.Strings = (
+      'DELETE FROM FUNCIONARIO'
+      'WHERE ID = :OLD_ID')
+    FetchRowSQL.Strings = (
+      'SELECT ID, NOME, CPF, SITUACAO, DATA_ALTERACAO'
+      'FROM FUNCIONARIO'
+      'WHERE ID = :OLD_ID')
+    Left = 228
+    Top = 13
+  end
+  object TicketUpdate: TFDUpdateSQL
+    Connection = TicketdbConnection
+    InsertSQL.Strings = (
+      'INSERT INTO TICKETFUNCIONARIO'
+      '(FUNCIONARIO, QUANTIDADE, SITUACAO, DATA_ENTREGA)'
+      
+        'VALUES (:NEW_FUNCIONARIO, :NEW_QUANTIDADE, :NEW_SITUACAO, :NEW_D' +
+        'ATA_ENTREGA)'
+      'RETURNING ID, FUNCIONARIO, QUANTIDADE, SITUACAO, DATA_ENTREGA')
+    ModifySQL.Strings = (
+      'UPDATE TICKETFUNCIONARIO'
+      
+        'SET FUNCIONARIO = :NEW_FUNCIONARIO, QUANTIDADE = :NEW_QUANTIDADE' +
+        ', '
+      '  SITUACAO = :NEW_SITUACAO, DATA_ENTREGA = :NEW_DATA_ENTREGA'
+      'WHERE ID = :OLD_ID'
+      'RETURNING ID, FUNCIONARIO, QUANTIDADE, SITUACAO, DATA_ENTREGA')
+    DeleteSQL.Strings = (
+      'DELETE FROM TICKETFUNCIONARIO'
+      'WHERE ID = :OLD_ID')
+    FetchRowSQL.Strings = (
+      'SELECT ID, FUNCIONARIO, QUANTIDADE, SITUACAO, DATA_ENTREGA'
+      'FROM TICKETFUNCIONARIO'
+      'WHERE ID = :OLD_ID')
+    Left = 228
+    Top = 61
+  end
+end

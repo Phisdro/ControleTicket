@@ -1,0 +1,23 @@
+object UDMTicket: TUDMTicket
+  OldCreateOrder = False
+  Height = 386
+  Width = 726
+  object TicketdbConnection: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=TICKETDB')
+    Connected = True
+    LoginPrompt = False
+    Left = 99
+    Top = 29
+  end
+  object TicketTransaction: TFDTransaction
+    Connection = TicketdbConnection
+    Left = 232
+    Top = 40
+  end
+  object TicketUpdate: TFDUpdateSQL
+    Connection = TicketdbConnection
+    Left = 328
+    Top = 40
+  end
+end
